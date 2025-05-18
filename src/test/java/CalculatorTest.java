@@ -22,7 +22,7 @@ public class CalculatorTest {
         assertAll(
                 () -> assertEquals(5, Calculator.divide(10, 2)),
                 () -> assertEquals(2, Calculator.divide(10, 5)),
-                () -> assertEquals(4, Calculator.divide(20, 0))
+                () -> assertEquals(4, Calculator.divide(20, 5))
                 );
 
     }
