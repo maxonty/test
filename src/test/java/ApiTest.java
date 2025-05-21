@@ -15,10 +15,6 @@ public class ApiTest {
         RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
 
         given().when().get("/posts/1").then().statusCode(200).body("userId", equalTo(1));
-
-
-
-
     }
 
     @Test
@@ -36,7 +32,7 @@ public class ApiTest {
     }
 
     @Test
-    void test1() {
+    void getPostById_returnsCorrectUserIdAndTitle() {
 
         Response response = given().
                 when().get("https://jsonplaceholder.typicode.com/posts/2").
@@ -53,7 +49,7 @@ public class ApiTest {
     }
 
     @Test
-    void test2() {
+    void getAllPosts_returnsNonEmptyListAndValidFirstPost() {
         RestAssured.baseURI = "https://jsonplaceholder.typicode.com";
 
         given().when().get("/posts").then().statusCode(200).body("size()", greaterThan(0)).
