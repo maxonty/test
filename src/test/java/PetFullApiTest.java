@@ -4,9 +4,9 @@ import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class PetApiTest {
+public class PetFullApiTest {
 
-    static long petId = 987654321;
+    static long petId = 795673692;
 
     @BeforeAll
     static void setup() {
@@ -19,7 +19,7 @@ public class PetApiTest {
     void createPetWithAllFields() {
         String petJson = """
             {
-              "id": 987654321,
+              "id": 795673692,
               "category": {
                 "id": 1,
                 "name": "cats"
@@ -43,7 +43,7 @@ public class PetApiTest {
                 .post("/pet")
                 .then()
                 .statusCode(200)
-                .body("id", equalTo((int) 987654321))
+                .body("id", equalTo((int) petId))
                 .body("category.id", equalTo(1))
                 .body("category.name", equalTo("cats"))
                 .body("name", equalTo("Tom"))
@@ -63,7 +63,7 @@ public class PetApiTest {
                 .get("/pet/{petId}")
                 .then()
                 .statusCode(200)
-                .body("id", equalTo((int) 987654321))
+                .body("id", equalTo((int) petId))
                 .body("category.id", equalTo(1))
                 .body("category.name", equalTo("cats"))
                 .body("name", equalTo("Tom"))

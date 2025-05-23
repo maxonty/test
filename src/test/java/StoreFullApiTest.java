@@ -5,7 +5,7 @@ import static io.restassured.RestAssured.*;
 
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class StoreFullFieldsTest {
+public class StoreFullApiTest {
 
     static long orderId = 863464120;
 
@@ -36,7 +36,7 @@ public class StoreFullFieldsTest {
                 .post("/store/order")
                 .then()
                 .statusCode(200)
-                .body("id", equalTo((int) 863464120))
+                .body("id", equalTo((int) orderId))
                 .body("petId", equalTo(1))
                 .body("quantity", equalTo(3))
                 .body("shipDate", startsWith("2025-05-23T02:16:18.817"))
@@ -55,7 +55,7 @@ public class StoreFullFieldsTest {
                 .get("/store/order/{orderId}")
                 .then()
                 .statusCode(200)
-                .body("id", equalTo((int) 863464120))
+                .body("id", equalTo((int) orderId))
                 .body("petId", equalTo(1))
                 .body("quantity", equalTo(3))
                 .body("shipDate", startsWith("2025-05-23T02:16:18.817"))
